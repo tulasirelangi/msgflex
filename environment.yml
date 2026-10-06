@@ -8,7 +8,6 @@ channels:
 dependencies:
   - python=3.12
   - pip
-  - cuda-version=12
 
   # Core scientific stack 
   - numpy>=1.24
