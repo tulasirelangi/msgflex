@@ -82,6 +82,7 @@ include = ["msgflex*"]
 
 [tool.setuptools.package-data]
 msgflex = ["py.typed"]
+msgflex.gui = ["assets/*.png"]
 
 # ── Dev tool configs ──────────────────────────────────────────────────────────
 [tool.ruff]
