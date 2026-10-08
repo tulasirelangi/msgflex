@@ -7,13 +7,6 @@
 #
 # Usage:
 #   bash setup_desktop.sh
-#
-# What this script does:
-#   1. Detects the bundle directory (wherever this script lives)
-#   2. Copies the icon to ~/.local/share/icons/
-#   3. Writes a valid .desktop file to ~/.local/share/applications/
-#   4. Refreshes the desktop database so the icon appears immediately
-#   5. Optionally places a shortcut on ~/Desktop
 # =============================================================================
 
 set -euo pipefail
@@ -34,7 +27,7 @@ BUNDLE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_SCRIPT="$BUNDLE_DIR/install.sh"
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-ICON_SRC="$BUNDLE_DIR/msgflex.png"           # optional — falls back gracefully
+ICON_SRC="$BUNDLE_DIR/msgflex.png"  # optional — falls back gracefully
 ICON_DIR="$HOME/.local/share/icons/hicolor/256x256/apps"
 ICON_DEST="$ICON_DIR/MSGFLEX.png"
 APP_DIR="$HOME/.local/share/applications"
