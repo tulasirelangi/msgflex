@@ -6,6 +6,7 @@ MSGFLEX GUI application shell.
 from __future__ import annotations
 import threading
 import os
+from pathlib import Path
 
 import dearpygui.dearpygui as dpg
 
@@ -18,8 +19,9 @@ from msgflex.gui.tabs import check, full_run, project, quantix, sparx, xpectra
 from msgflex.gui.theme import TOKENS, apply_global_theme
 from msgflex.core.process_registry import ProcessRegistry
 
-# import faulthandler
-# faulthandler.enable()
+_ASSETS = Path(__file__).parent / "assets"
+_ICON_LARGE = _ASSETS / "msgflex.png"
+_ICON_SMALL = _ASSETS / "msgflex_64.png"
 
 def _on_quit_clicked():
     threading.Thread(target=ProcessRegistry.kill_all, daemon=True).start()
@@ -175,6 +177,11 @@ def run_gui() -> None:
     themes = apply_global_theme()
     _log_pane = LogPane(parent=0, state=state)  # parent assigned in build_app
 
+    # additonal icon kwargs for Windows and Linux
+    icon_kwargs = {}
+    if _ICON_LARGE.is_file() and _ICON_SMALL.is_file():
+        icon_kwargs = dict(small_icon=str(_ICON_SMALL), large_icon=str(_ICON_LARGE))
+    
     # Viewport — resizes naturally
     dpg.create_viewport(
         title=f"MSGFLEX v{__version__}",
@@ -182,6 +189,7 @@ def run_gui() -> None:
         height=720,
         min_width=980,
         min_height=600,
+        **icon_kwargs
     )
 
     build_app(state, themes, fonts=_fonts)
@@ -192,7 +200,6 @@ def run_gui() -> None:
         _log_pane._drain()
         dpg.render_dearpygui_frame()
 
-    # Viewport closed — disable further log pane writes immediately
     # so any in-flight worker thread DPG calls become no-ops.
     _log_pane._content_id = 0
 
