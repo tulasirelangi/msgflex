@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # =============================================================================
-# MSGFLEX Pipeline v0.5.0 — Desktop Entry Setup
+# MSGFLEX Pipeline v1.1.0 — Desktop Entry Setup
 # =============================================================================
 # Run this once after extracting the MSGFLEX bundle to register the
 # double-click installer icon on your Linux desktop (GNOME / KDE / XFCE).
