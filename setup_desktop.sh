@@ -1,13 +1,4 @@
 #!/usr/bin/env bash
-# =============================================================================
-# MSGFLEX Pipeline v1.1.0 — Desktop Entry Setup
-# =============================================================================
-# Run this once after extracting the MSGFLEX bundle to register the
-# double-click installer icon on your Linux desktop (GNOME / KDE / XFCE).
-#
-# Usage:
-#   bash setup_desktop.sh
-# =============================================================================
 
 set -euo pipefail
 
@@ -27,7 +18,7 @@ BUNDLE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_SCRIPT="$BUNDLE_DIR/install.sh"
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-ICON_SRC="$BUNDLE_DIR/msgflex.png"  # optional — falls back gracefully
+ICON_SRC="$BUNDLE_DIR/msgflex/gui/assets/msgflex.png" # optional
 ICON_DIR="$HOME/.local/share/icons/hicolor/256x256/apps"
 ICON_DEST="$ICON_DIR/MSGFLEX.png"
 APP_DIR="$HOME/.local/share/applications"
@@ -45,9 +36,7 @@ echo "  Bundle directory : $BUNDLE_DIR"
 echo "  install.sh       : $INSTALL_SCRIPT"
 echo ""
 
-# =============================================================================
 # Preflight
-# =============================================================================
 header "Checking requirements"
 
 if [[ "$(uname -s)" != "Linux" ]]; then
