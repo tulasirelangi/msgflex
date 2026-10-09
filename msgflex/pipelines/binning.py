@@ -809,7 +809,7 @@ def run(
                 managed_run(
                     [
                         "mono",
-                        tool("MzidMerger/net8.0/MzidMerger.exe"),
+                        tool("MzidMerger/net48/MzidMerger.exe"),
                         "-InDir", tmp_dir,
                         "-Out", mzid_out,
                         "-KeepOnlyBestResults",
