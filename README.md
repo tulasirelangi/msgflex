@@ -257,7 +257,7 @@ msgflex quantix \
 ### Graphical interface
 
 ```bash
-msgflex-gui
+msgflex gui
 ```
 
 The GUI provides a tabbed interface for project configuration, parameter editing,
